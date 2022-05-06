@@ -126,7 +126,7 @@
                 <li class="nav-label">Dashboard</li>
 
                 <li>
-                    <a href="{{ route('home') }}" aria-expanded="false">
+                    <a href="{{ route('test') }}" aria-expanded="false">
                         <i class="icon-speedometer menu-icon mr-3"></i><span class="nav-text">Dashboard</span>
                     </a>
                 </li>

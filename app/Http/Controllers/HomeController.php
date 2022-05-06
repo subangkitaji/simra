@@ -110,9 +110,50 @@ class HomeController extends Controller
     
         $output1 = Kategori::with(['transaksiCount1'])->get();
         $output2 = Kategori::with(['transaksiCount2'])->get();
+        $pengeluaran_total = DB::table('transaksi')
+        ->select(DB::raw('SUM(nominal) as total'))
+        ->where('jenis','Pengeluaran')
+        ->first();
+     
+      
+        $pemasukan_total = DB::table('transaksi')
+        ->select(DB::raw('SUM(nominal) as total'))
+        ->where('jenis','Pemasukan')
+        ->first();
+        
+   
+        
+    
         return view('app.test',[
             'pemasukan' => $output1,
             'pengeluaran' => $output2,
+            'total_masuk' => $pemasukan_total,
+            'total_keluar' => $pengeluaran_total,
+            ]
+        );
+    }
+
+    public function real()
+    {
+    
+        $output1 = Kategori::with(['transaksiCount1'])->get();
+        $output2 = Kategori::with(['transaksiCount2'])->get();
+        $pengeluaran_total = DB::table('transaksi')
+        ->select(DB::raw('SUM(nominal) as total'))
+        ->where('jenis','Pengeluaran')
+        ->first();
+     
+      
+        $pemasukan_total = DB::table('transaksi')
+        ->select(DB::raw('SUM(nominal) as total'))
+        ->where('jenis','Pemasukan')
+        ->first();
+
+        return view('app.real',[
+                'pemasukan' => $output1,
+                'pengeluaran' => $output2,
+                'total_masuk' => $pemasukan_total,
+                'total_keluar' => $pengeluaran_total,
             ]
         );
     }

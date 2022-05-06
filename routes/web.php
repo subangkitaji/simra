@@ -25,6 +25,7 @@ Auth::routes([
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/test', 'HomeController@test')->name('test');
+Route::get('/realisasi', 'HomeController@real')->name('realisasi');
 
 Route::get('/kategori', 'HomeController@kategori')->name('kategori');
 Route::post('/kategori/aksi', 'HomeController@kategori_aksi')->name('kategori.aksi');

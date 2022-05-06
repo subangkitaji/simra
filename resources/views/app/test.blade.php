@@ -15,7 +15,7 @@
   </div>
 
   <div class="container-fluid mt-3">
-    <div class="row">
+    <div class="row mb-3">
       <div class="col-12">
           <div class="card">
               <div class="card-body">
@@ -28,7 +28,7 @@
                   <ul class="nav nav-tabs mb-4" role="tablist">
                       <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#pagu">PAGU</a>
                       </li>
-                      <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#realisasi">Progress Realisasi</a>
+                      <li class="nav-item"><a class="nav-link"  href="{{ route('realisasi') }}">Progress Realisasi</a>
                       </li>
                   </ul>
                   <div class="tab-content">
@@ -69,7 +69,42 @@
           </div>
       </div>
   </div>
- </div>
+  <div class="row mb-3"> 
+    <div class="col-lg">
+      <div class="card">
+        <div class="card-body"> 
+           <div class="row mb-3">
+             <div class="col md-6">
+                <h4>Total Dana PAGU</h4>
+                <p>Jumlah Seluruh Dana Pagu </p>
+                <h3>{{ "Rp. ".number_format($total_masuk->total)." ,-"}}</h3>
+             </div>
+             <div class="col md-6">
+                <h4>Realisasi Anggaran</h4>
+                <p>Jumlah Seluruh Dana Terealisasi </p>
+                <h3>{{ "Rp. ".number_format($total_keluar->total)." ,-"}}</h3>
+             </div>     
+          </div>  
+          <hr>
+          <div class="row mt-4">
+            <div class="col-lg">
+              <h4>PERSENTASE REALISASI ANGGARAN</h4> 
+              <div class="stat-widget-one mt-3">
+                <div class="stat-content">
+                    <div class="stat-text">Data Terbaru</div>
+                    <div class="stat-digit gradient-3-text">{{ number_format($total_keluar->total / $total_masuk->total * 100) }} <i class="fa fa-percent"></i></div>
+                </div>
+                <div class="progress mb-3">
+                    <div class="progress-bar gradient-3" style="width: {{ number_format($total_keluar->total / $total_masuk->total * 100) }}%;" role="progressbar"><span class="sr-only"></span>
+                    </div>
+                </div>
+            </div>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
